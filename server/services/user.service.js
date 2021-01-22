@@ -7,6 +7,13 @@ module.exports = {
         } catch (error) {
             throw new Error('Error while creating new user!', error)
         }
+    },
+    find: async () => {
+        try {
+            return await User.find({});
+        } catch (error) {
+            throw new Error('Error while finding user!', error)
+        }
     }
 }
 
