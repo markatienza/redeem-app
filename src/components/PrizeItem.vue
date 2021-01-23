@@ -1,5 +1,5 @@
 <template>
-  <div class="card col-sm m-3" style="width: 20rem">
+  <div class="card col-sm-12 col-lg-3 col-md-12 m-3" style="width: 25m">
     <img
       v-bind:src="item.image_url"
       class="card-img-top"
@@ -27,6 +27,9 @@
 }
 .br {
   border-radius: 20px;
+  width: 70%;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 </style>
 <script>
@@ -37,7 +40,7 @@ export default {
   },
   methods: {
     redeem() {
-      this.$emit("selecItem", this.item);
+      this.$emit("selectItem", this.item);
       this.$router.push({ path: "home", query: { name: this.item.name } });
     },
   },

@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-6">
+      <div class="col-xs-12 col-md-8 col-lg-6">
         <img
           class="img-fluid img"
           v-bind:src="item.image_url"
           v-bind:alt="item.name"
         />
       </div>
-      <div class="container col-6">
+      <div class="container col-md-4 col-lg-6 col-xs-12 mt-5">
         <div class="row">
           <div class="col-12-sm">
             <div class="item-name">Win a {{ item.name }}</div>
@@ -28,7 +28,10 @@
           </div>
           <hr />
           <div class="col-12-sm">
-            <div class="item-footer">{{ item.quantity }} left in stock</div>
+            <div class="item-footer" v-if="item.quantity > 0">
+              {{ item.quantity }} left in stock
+            </div>
+            <div class="item-footer" v-else>Out of stock!</div>
           </div>
         </div>
       </div>
@@ -42,7 +45,7 @@
 }
 .item-name {
   display: flex;
-  font-size: 40px;
+  font-size: 1.5em;
   font-weight: 900;
 }
 .item-footer {
@@ -56,7 +59,7 @@
   }
 }
 .img {
-  width: 90%;
+  width: 100%;
 }
 
 .br {

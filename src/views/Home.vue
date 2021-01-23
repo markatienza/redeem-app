@@ -6,7 +6,7 @@
   />
 
   <div class="home">
-    <LightBox v-if="selectedItem" :item="selectedItem" />
+  <LightBox v-if="selectedItem" :item="selectedItem" @selectItem="selectItem" />
     <div class="container">
       <div v-if="!selectedItem.name" class="items-container">
         <PrizeItem
@@ -14,7 +14,7 @@
           v-for="item of items"
           :key="item.name"
           :item="item"
-          @selecItem="selecItem"
+          @selectItem="selectItem"
         />
       </div>
       <div v-if="selectedItem.name">
@@ -82,9 +82,9 @@ export default {
       this.user = data.user;
       this.isAuthenticate = data.status;
     },
-    selecItem(data) {
+    selectItem(data) {
+      console.log(this.selectedItem.quantity);
       this.selectedItem = data;
-      console.log(this.selectedItem);
     },
   },
 };

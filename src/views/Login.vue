@@ -1,11 +1,11 @@
 <template>
   <h1>LOGIN</h1>
-  <div class="login container col-6-sm col-6 mt-5">
+  <div class="login container col-sm-12 col-md-7 col-lg-6 mt-5">
     <h3>{{ error.message }}</h3>
 
     <div class="row mb-3">
-      <label for="username" class="col-sm-2 col-form-label">Username</label>
-      <div class="col-sm-10">
+      <label for="username" class="col-sm-3 col-form-label">Username</label>
+      <div class="col-sm-9">
         <input
           type="text"
           class="form-control"
@@ -16,8 +16,8 @@
     </div>
 
     <div class="row mb-3">
-      <label for="password" class="col-sm-2 col-form-label">Password</label>
-      <div class="col-sm-10">
+      <label for="password" class="col-sm-3 col-form-label">Password</label>
+      <div class="col-sm-9">
         <input
           type="password"
           class="form-control"

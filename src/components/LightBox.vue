@@ -102,7 +102,7 @@ export default {
         .then((response) => {
           const data = response.data.data;
           if (data) {
-            this.$emit("selectedItem", data);
+            this.$emit("selectItem", data);
             this.isConfirm = !this.isConfirm;
             this.title = "Congratulations!";
           }

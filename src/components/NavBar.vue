@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">LOGO</a>
+      <a class="navbar-brand" href="#">REWARD APP</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -15,33 +15,29 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-        <form class="d-flex">
-          <div class="dropdown" v-if="isAuthenticate">
-            <button
-              class="btn dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {{ user.firstName }} {{ user.lastName }}
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li>
-                <a class="dropdown-item" href="#" v-on:click="logout()"
-                  >logout</a
-                >
-              </li>
-            </ul>
-          </div>
+        <div class="dropdown" v-if="isAuthenticate">
           <button
-            class="btn btn-success"
-            v-if="!isAuthenticate"
-            v-on:click="login()"
+            class="btn dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
           >
-            Login
+            {{ user.firstName }} {{ user.lastName }}
           </button>
-        </form>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li>
+              <a class="dropdown-item" href="#" v-on:click="logout()">logout</a>
+            </li>
+          </ul>
+        </div>
+        <button
+          class="btn btn-success"
+          v-if="!isAuthenticate"
+          v-on:click="login()"
+        >
+          Login
+        </button>
       </div>
     </div>
   </nav>
@@ -56,10 +52,11 @@ export default {
     logout() {
       deleteToken();
       this.$emit("updateUser", { user: {}, status: false });
-      this.$router.push({ name: "login", query: { redirect: "/path" } });
+      this.$router.replace({ name: "Login" });
     },
     login() {
-      window.location = '/login'
+      console.log(this.$router);
+      this.$router.replace({ name: "Login" });
     },
   },
   beforeCreate() {

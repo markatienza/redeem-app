@@ -2,7 +2,7 @@
   <h1>REGISTRATION</h1>
   <div class="container mt-5">
     <h3 style="color: red">{{ error.message }}</h3>
-    <form class="row col-6 mx-auto g-6">
+    <form class="row row col-sm-12 col-md-8 col-lg-6 mx-auto g-6">
       <div class="row mb-3">
         <label for="username" class="col-sm-3 col-form-label">Username</label>
         <div class="col-sm-9">
@@ -63,7 +63,7 @@
         </div>
       </div>
     </form>
-    <div class="d-grid gap-2 col-5 mx-auto">
+    <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-6 mx-auto">
       <button class="btn btn-primary" type="button" @click="register()">
         Create new account
       </button>
