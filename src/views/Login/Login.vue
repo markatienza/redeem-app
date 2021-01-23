@@ -1,26 +1,39 @@
 <template>
-  <div class="login">
-    <h1>Login</h1>
+  <h1>LOGIN</h1>
+  <div class="login container col-6-sm col-6 mt-5">
     <h3>{{ error.message }}</h3>
-    <div>
-      <input
-        type="text"
-        name="username"
-        v-model="input.username"
-        placeholder="Username"
-      />
+
+    <div class="row mb-3">
+      <label for="username" class="col-sm-2 col-form-label">Username</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          v-model="input.username"
+          id="username"
+        />
+      </div>
     </div>
-    <div>
-      <input
-        type="password"
-        name="password"
-        v-model="input.password"
-        placeholder="Password"
-      />
+
+    <div class="row mb-3">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input
+          type="password"
+          class="form-control"
+          v-model="input.password"
+          id="password"
+        />
+      </div>
     </div>
-    <button type="submit" @click="login()">Login</button>
-    <br />
-    <button type="button" @click="register()">Register</button>
+    <div class="d-grid gap-2 col-5 mx-auto">
+      <button class="btn btn-primary" type="button" @click="login()">
+        Login
+      </button>
+      <button class="btn btn-success" type="button" @click="register()">
+        Register
+      </button>
+    </div>
   </div>
 </template>
 

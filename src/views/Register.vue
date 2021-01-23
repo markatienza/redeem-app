@@ -1,51 +1,76 @@
 <template>
-  <div class="login">
-    <h1>REGISTER</h1>
-    <h3>{{ error.message }}</h3>
-    <div>
-      <input
-        type="text"
-        name="username"
-        v-model="input.username"
-        placeholder="Username"
-      />
+  <h1>REGISTRATION</h1>
+  <div class="container mt-5">
+    <h3 style="color: red">{{ error.message }}</h3>
+    <form class="row col-6 mx-auto g-6">
+      <div class="row mb-3">
+        <label for="username" class="col-sm-3 col-form-label">Username</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            v-model="input.username"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="password" class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            v-model="input.password"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="confirmPassword" class="col-sm-3 col-form-label"
+          >Confirm Password</label
+        >
+        <div class="col-sm-9">
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            v-model="input.confirmPassword"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="firstName" class="col-sm-3 col-form-label"
+          >First Name</label
+        >
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            v-model="input.firstName"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="lastName" class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            v-model="input.lastName"
+          />
+        </div>
+      </div>
+    </form>
+    <div class="d-grid gap-2 col-5 mx-auto">
+      <button class="btn btn-primary" type="button" @click="register()">
+        Create new account
+      </button>
+      <button class="btn btn-success" type="button" @click="backToLogin()">
+        Back To Login
+      </button>
     </div>
-    <div>
-      <input
-        type="password"
-        name="password"
-        v-model="input.password"
-        placeholder="Password"
-      />
-    </div>
-    <div>
-      <input
-        type="password"
-        name="confirmPassword"
-        v-model="input.confirmPassword"
-        placeholder="Confirm Password"
-      />
-    </div>
-
-    <div>
-      <input
-        type="text"
-        name="firstName"
-        v-model="input.firstName"
-        placeholder="First Name"
-      />
-    </div>
-    <div>
-      <input
-        type="text"
-        name="lastName"
-        v-model="input.lastName"
-        placeholder="Last Name"
-      />
-    </div>
-    <button type="button" v-on:click="register()">Register</button>
-    <br />
-    <button type="button" v-on:click="backToLogin()">Back to Login</button>
   </div>
 </template>
 
