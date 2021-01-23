@@ -15,5 +15,9 @@ module.exports = {
             bufferMaxEntries: 0,
             autoIndex: true,
         },
+    },
+    jwt: {
+        exp: 60 * 60,
+        secret: process.env.JWT_SECRET || '!@#*&^SADGNCZB(*@!&#(*@!&#(*@!&#ASD'
     }
 }
