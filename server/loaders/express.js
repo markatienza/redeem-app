@@ -33,7 +33,7 @@ module.exports = async ({ app }) => {
 
 	// this * route is to serve project on different page routes except root `/`
 	app.get(/.*/, function (req, res) {
-		res.sendFile(path.join(__dirname, '/dist/index.html'));
+		res.sendFile(path.join(__dirname, '../../dist/index.html'));
 	});
 
 	console.log('Express is now configured!');
