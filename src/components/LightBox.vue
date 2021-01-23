@@ -116,8 +116,9 @@ export default {
         });
     },
     backToHomePage() {
-      if (this.isConfirm && this.isNotValid) return (window.location = "/login");
-      window.location = "/home";
+      if (this.isConfirm && this.isNotValid)
+        return this.$router.push({ name: "Login" });
+      this.$router.push({ name: "Home" });
     },
   },
   props: {
