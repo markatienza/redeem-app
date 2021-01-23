@@ -37,12 +37,9 @@
   </div>
 </template>
 
-<style lang="less" scoped>
-@import "./login.style.less";
-</style>
 <script>
-import request from "../../api/request";
-import { setToken } from "../../helpers/token";
+import request from "../api/request";
+import { setToken } from "../helpers/token";
 export default {
   name: "Login",
   data() {

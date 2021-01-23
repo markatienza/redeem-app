@@ -6,7 +6,7 @@
   />
 
   <div class="home">
-    <RedeemModal v-if="selectedItem" :item="selectedItem" />
+    <LightBox v-if="selectedItem" :item="selectedItem" />
     <div class="container">
       <div v-if="!selectedItem.name" class="items-container">
         <PrizeItem
@@ -18,7 +18,7 @@
         />
       </div>
       <div v-if="selectedItem.name">
-        <PrizeItemPreview :item="selectedItem" />
+        <PrizeDetail :item="selectedItem" />
       </div>
     </div>
   </div>
@@ -31,10 +31,9 @@
 <script>
 // @ is an alias to /src
 import NavBar from "../components/NavBar";
-// import PrizeItem from "../components/PrizeItem";
 import PrizeItem from "../components/PrizeItem";
-import PrizeItemPreview from "../components/PrizeItemPreview";
-import RedeemModal from "../components/RedeemModal";
+import PrizeDetail from "../components/PrizeDetail";
+import LightBox from "../components/LightBox";
 import request from "../api/request";
 
 export default {
@@ -66,8 +65,8 @@ export default {
   components: {
     NavBar,
     PrizeItem,
-    PrizeItemPreview,
-    RedeemModal,
+    PrizeDetail,
+    LightBox,
   },
   data() {
     return {
