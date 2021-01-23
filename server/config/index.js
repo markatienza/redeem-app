@@ -13,7 +13,7 @@ module.exports = {
             useUnifiedTopology: true,
             poolSize: 10,
             bufferMaxEntries: 0,
-            autoIndex: true,
+            autoIndex: true
         },
     },
     jwt: {

@@ -11,13 +11,15 @@
       <div class="container col-6">
         <div class="row">
           <div class="col-12-sm">
-            <div class="item-name">{{ item.name }}</div>
+            <div class="item-name">Win a {{ item.name }}</div>
           </div>
           <hr />
           <div class="col-12-sm p-3 mt-4 mb-5 bs">
             <button
               type="button"
               class="btn btn-warning br"
+              data-bs-toggle="modal"
+              data-bs-target="#showConfirmModal"
               v-on:click="showModal()"
             >
               Redeem
@@ -66,6 +68,11 @@ export default {
   name: "PrizeItemPreview",
   props: {
     item: Object,
+  },
+  methods: {
+    showModal() {
+      this.$emit("selectedItem", this.item);
+    },
   },
 };
 </script>

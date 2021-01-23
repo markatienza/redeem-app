@@ -1,9 +1,9 @@
-const { User } = require('../models');
+const { Users } = require('../models');
 const { BadRequest } = require('../utils/serverError')
 module.exports = {
     create: async (userObj) => {
         try {
-            return await User.create(userObj);
+            return await Users.create(userObj);
         } catch (error) {
             throw new BadRequest('Error while creating new user!', error)
         }
@@ -11,9 +11,9 @@ module.exports = {
     find: async (data = {}, isMany) => {
         try {
             if (isMany) {
-                return await User.find(data);
+                return await Users.find(data);
             } else {
-                return await User.findOne(data);
+                return await Users.findOne(data);
             }
         } catch (error) {
             throw new BadRequest('Error while finding user!', error)
@@ -21,14 +21,15 @@ module.exports = {
     },
     count: async (data) => {
         try {
-            return await User.countDocuments(data);
+            return await Users.countDocuments(data);
         } catch (error) {
             throw new BadRequest('Error while finding user!', error)
         }
     },
     auth: async (data) => {
         try {
-            const user = await User.findOne(data, false);
+            console.log(data)
+            const user = await Users.findOne(data, false);
             if (!user) return null;
             return {
                 username: user.username,

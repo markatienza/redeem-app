@@ -59,10 +59,7 @@ export default {
       this.$router.push({ name: "login", query: { redirect: "/path" } });
     },
     login() {
-      this.$router.replace({
-        name: "Login",
-        query: { redirect: window.location.pathname },
-      });
+      window.location = '/login'
     },
   },
   beforeCreate() {

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <router-view @updateUser="updateUser" />
+    <router-view />
   </div>
 </template>
 <script>

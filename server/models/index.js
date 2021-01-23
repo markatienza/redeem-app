@@ -1,3 +1,4 @@
 module.exports = {
-    User: require('./user.model')
+    Users: require('./user.model'),
+    Prizes: require('./prizes.model')
 }
