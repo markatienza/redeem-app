@@ -1,7 +1,7 @@
 <template>
   <h1>LOGIN</h1>
   <div class="login container col-sm-12 col-md-7 col-lg-6 mt-5">
-    <h3>{{ error.message }}</h3>
+    <h5 style="color: red">{{ error.message }}</h5>
 
     <div class="row mb-3">
       <label for="username" class="col-sm-3 col-form-label">Username</label>
@@ -61,10 +61,10 @@ export default {
         request
           .post("/user/auth", data)
           .then((response) => {
-            const { data } = response.data;
+            const { data, message } = response.data;
             console.log(data);
-            if (!data.user) {
-              return (this.error.message = data.message);
+            if (!data) {
+              return (this.error.message = message);
             }
             setToken(data.token);
             this.$emit("updateUser", {
@@ -77,7 +77,7 @@ export default {
             console.log(error);
           });
       } else {
-        console.log("A username and password must be present");
+        this.error.message = "Invalid username and password!";
       }
     },
     register() {
