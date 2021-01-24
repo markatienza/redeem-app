@@ -110,17 +110,18 @@ export default {
         })
         .catch((err) => {
           console.log(err);
-          if (!err.isSuccess) {
-            this.title = "Please Login!";
-            this.isNotValid = true;
-          }
+          this.title = "Please Login!";
+          this.isNotValid = true;
         });
     },
     backToHomePage() {
-      this.$emit("selectItem", {});
       if (this.isConfirm && this.isNotValid)
         return this.$router.push({ name: "Login" });
-      console.log("?????????????????");
+
+      this.$emit("selectItem", {});
+      this.$emit("setItems");
+      this.$emit("updateItems", true);
+      this.isConfirm = true;
       this.$router.replace({ name: "Home" });
     },
   },

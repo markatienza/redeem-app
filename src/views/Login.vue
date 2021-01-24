@@ -62,7 +62,6 @@ export default {
           .post("/user/auth", data)
           .then((response) => {
             const { data, message } = response.data;
-            console.log(data);
             if (!data) {
               return (this.error.message = message);
             }

@@ -28,7 +28,6 @@ module.exports = {
     },
     auth: async (data) => {
         try {
-            console.log(data)
             const user = await Users.findOne(data, false);
             if (!user) return null;
             return {

@@ -2,15 +2,12 @@
   <div class="card col-sm-12 col-lg-3 col-md-12 m-3" style="width: 25m">
     <img
       v-bind:src="item.image_url"
-      class="card-img-top"
+      class="card-img-top img"
       v-bind:alt="item.name"
     />
     <div class="card-body">
-      <h3 class="card-title fw-bolder m-5">Win a {{ item.name }}</h3>
-      <!-- <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p> -->
+      <h3 class="card-title fw-bolder mt-5 mb-5">Win a {{ item.name }}</h3>
+
       <button type="button" class="btn btn-warning br" v-on:click="redeem()">
         Redeem
         <i class="fas fa-angle-right"></i>
@@ -21,9 +18,10 @@
 <style lang="less" scoped>
 .card {
   float: left;
+  min-height: 420px;
 }
 .img {
-  height: 270px;
+  height: 180px;
 }
 .br {
   border-radius: 20px;

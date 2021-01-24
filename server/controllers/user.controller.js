@@ -36,10 +36,19 @@ module.exports = {
     },
     verifyToken: async (req, res) => {
         try {
-            const token = req.body.token;
-            if (!token) return badRequest(res, 'Invalid Token!');
-            const isValid = await jwt.verify(token);
-            return response(res, 'TOKEN!', isValid);
+            const bearerHeader = req.headers['authorization'];
+
+            if (bearerHeader) {
+                const bearer = bearerHeader.split(' ');
+                const bearerToken = bearer[1];
+                jwt.verify(bearerToken).then(data => {
+                    response(res, 'Valid Token', { isValidToken: true });
+                }).catch(error => {
+                    response(res, 'Invalid Token', { isValidToken: false });
+                })
+            } else {
+                response(res, 'Invalid Token', { isValidToken: false });
+            }
         } catch (error) {
             return response(res, error)
         }

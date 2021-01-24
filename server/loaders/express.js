@@ -2,9 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const path = require('path');
-const passport = require('passport');
 
+const path = require('path');
 const routes = require('../routes');
 const config = require('../config');
 
@@ -23,10 +22,6 @@ module.exports = async ({ app }) => {
 
 	// Logs all the routes that user was trying to access
 	app.use(morgan('combined'));
-
-	// Load OAuths
-	app.use(passport.initialize());
-	app.use(passport.session());
 
 	//here we are configuring dist to serve app files
 	app.use('/', express.static(path.join(__dirname, '../../dist')));

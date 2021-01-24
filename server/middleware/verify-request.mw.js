@@ -8,10 +8,10 @@ module.exports = (req, res, next) => {
         jwt.verify(bearerToken).then(data => {
             next();
         }).catch(error => {
-            res.status(403).json({ message: "Invalid token! Please login!", isSuccess: false });
+            res.status(403).json({ status: 403, message: "Invalid token! Please login!", isSuccess: false });
         })
     } else {
         // Forbidden
-        res.status(403).json({ message: "Invalid token! Please login!", isSuccess: false });
+        res.status(403).json({ status: 403, message: "Invalid token! Please login!", isSuccess: false });
     }
 }

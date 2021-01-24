@@ -5,8 +5,13 @@
     @updateUser="updateUser"
   />
 
+  <LightBox
+    v-if="selectedItem"
+    :item="selectedItem"
+    @selectItem="selectItem"
+    @setItems="setItems"
+  />
   <div class="home">
-  <LightBox v-if="selectedItem" :item="selectedItem" @selectItem="selectItem" />
     <div class="container">
       <div v-if="!selectedItem.name" class="items-container">
         <PrizeItem
@@ -38,28 +43,13 @@ import request from "../api/request";
 
 export default {
   name: "Home",
-  beforeCreate() {
+  beforeMount() {
     // Make a call to fetch the items
-    console.log("before Create", this.$route.query);
     const name = this.$route.query.name;
     if (name) {
-      request
-        .get("/prizes/" + name)
-        .then((response) => {
-          if (response.data) {
-            this.selectedItem = response.data.data;
-          }
-        })
-        .then((err) => console.log(err));
+      this.selectItem({ name });
     } else {
-      request
-        .get("/prizes/")
-        .then((response) => {
-          if (response.data) {
-            this.items = response.data.data;
-          }
-        })
-        .catch((err) => console.log(err));
+      this.setItems();
     }
   },
   components: {
@@ -83,8 +73,25 @@ export default {
       this.isAuthenticate = data.status;
     },
     selectItem(data) {
-      console.log(this.selectedItem.quantity);
-      this.selectedItem = data;
+      if (!data.name) return (this.selectedItem = data);
+      request
+        .get("/prizes/" + data.name)
+        .then((response) => {
+          if (response.data) {
+            this.selectedItem = response.data.data;
+          }
+        })
+        .catch((err) => console.log(err));
+    },
+    setItems() {
+      request
+        .get("/prizes")
+        .then((response) => {
+          if (response.data) {
+            this.items = response.data.data;
+          }
+        })
+        .catch((err) => console.log(err));
     },
   },
 };

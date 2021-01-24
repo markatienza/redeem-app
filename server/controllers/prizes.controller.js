@@ -37,7 +37,7 @@ module.exports = {
         try {
             const name = req.body.name;
             if (!name) return badRequest(res, 'Invalid Request!');
-            const outOfQuantity = service.prizes.count({ name, quantity: { $lte: 0 } }) > 0;
+            const outOfQuantity = service.prizes.count({ name, quantity: { $gte: 0 } }) > 0;
             if (outOfQuantity) return response(res, 'Out of quantity!');
             const prize = await service.prizes.update({ name }, { $inc: { quantity: -1 } });
             return response(res, 'Success!', prize)
@@ -49,8 +49,14 @@ module.exports = {
         try {
             const name = req.body.name;
             const quantity = req.body.quantity || 10;
-            if (!name) return badRequest(res, 'Invalid Request!');
-            const prize = await service.prizes.update({ name }, { $set: { quantity } });
+            const query = {};
+            let toUpdate = { quantity };
+            let isMany = name ? false : true;
+            if (name) {
+                query['name'] = name;
+                toUpdate = { $set: { quantity } }
+            }
+            const prize = await service.prizes.update(query, toUpdate, isMany);
             return response(res, 'Success!', prize)
         } catch (error) {
             return response(res, error);

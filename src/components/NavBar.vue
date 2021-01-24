@@ -55,7 +55,6 @@ export default {
       this.$router.replace({ name: "Login" });
     },
     login() {
-      console.log(this.$router);
       this.$router.replace({ name: "Login" });
     },
   },

@@ -8,9 +8,10 @@ module.exports = {
             throw new BadRequest('Error while creating new user!', error)
         }
     },
-    update: async (query, toUpdate) => {
+    update: async (query, toUpdate, isMany) => {
         try {
-            return await Prizes.findOneAndUpdate(query, toUpdate, { new: true })
+            if (!isMany) return await Prizes.findOneAndUpdate(query, toUpdate, { new: true });
+            return await Prizes.updateMany(query, toUpdate);
         } catch (error) {
             throw new BadRequest('Error while creating new user!', error)
         }
