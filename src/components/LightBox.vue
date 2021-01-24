@@ -40,6 +40,7 @@
           <button
             type="button"
             class="btn btn-md btn-warning"
+            data-bs-dismiss="modal"
             v-on:click="backToHomePage()"
             v-if="!isConfirm || (isConfirm && isNotValid)"
           >
@@ -116,9 +117,11 @@ export default {
         });
     },
     backToHomePage() {
+      this.$emit("selectItem", {});
       if (this.isConfirm && this.isNotValid)
         return this.$router.push({ name: "Login" });
-      this.$router.push({ name: "Home" });
+      console.log("?????????????????");
+      this.$router.replace({ name: "Home" });
     },
   },
   props: {
