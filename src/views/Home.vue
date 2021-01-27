@@ -13,24 +13,77 @@
   />
   <div class="home">
     <div class="container">
-      <div v-if="!selectedItem.name" class="items-container">
-        <PrizeItem
-          class="col-sm m-25"
-          v-for="item of items"
-          :key="item.name"
-          :item="item"
-          @selectItem="selectItem"
-        />
+      <!-- HEADER -->
+      <div class="header row">
+        <div class="header-text fs-2">Rewards</div>
       </div>
-      <div v-if="selectedItem.name">
-        <PrizeDetail :item="selectedItem" />
+      <!-- CONTENT -->
+      <div class="content row px-lg-5 pb-5">
+        <div v-if="!selectedItem.name">
+          <div class="content-header">
+            <div class="content-header-t">
+              Here is the full list of prizes that you can win.
+            </div>
+          </div>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <PrizeItem
+              v-for="item of items"
+              :key="item.name"
+              :item="item"
+              @selectItem="selectItem"
+            />
+          </div>
+        </div>
+
+        <div v-if="selectedItem.name">
+          <PrizeDetail :item="selectedItem" />
+        </div>
+      </div>
+      <!-- FOOTER -->
+      <div class="footer row">
+        <div class="footer-t fs-7 fw-bold">
+          Terms & Condition | Privacy Policy
+        </div>
       </div>
     </div>
   </div>
 </template>
 <style lang="less" scoped>
+.header {
+  background-color: rgb(2, 116, 187);
+  height: 170px;
+  display: flex;
+  align-items: center;
+  .header-text {
+    font-weight: 900;
+    color: white;
+  }
+}
+.content {
+  background-color: rgb(234, 234, 234);
+  .content-header {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .content-header-t {
+      color: #414141;
+    }
+  }
+}
+
 .items-container {
   display: block;
+}
+.footer {
+  background: rgb(24, 24, 24);
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .footer-t {
+    color: white;
+  }
 }
 </style>
 <script>

@@ -26,7 +26,7 @@
         />
       </div>
     </div>
-    <div class="d-grid gap-2 col-sm-12 col-md-7 col-lg-6 mx-auto">
+    <div class="d-grid gap-2 col-12 mx-auto">
       <button class="btn btn-primary" type="button" @click="login()">
         Login
       </button>

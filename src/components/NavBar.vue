@@ -1,7 +1,15 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">REWARD APP</a>
+      <a class="navbar-brand" href="#">
+        <img
+          src="@/assets/logo.png"
+          alt=""
+          width="30"
+          height="24"
+        />
+        REDEEM APP
+      </a>
       <button
         class="navbar-toggler"
         type="button"

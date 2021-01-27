@@ -10,7 +10,6 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{ title }}</h5>
           <button
             type="button"
             class="btn-close"
@@ -18,6 +17,9 @@
             aria-label="Close"
           ></button>
         </div>
+        <h4 class="modal-body-title fw-bold" id="exampleModalLabel">
+          {{ title }}
+        </h4>
         <!-- CONFIMATION -->
         <div class="modal-body" v-if="isConfirm && !isNotValid">
           <img
@@ -71,13 +73,22 @@
 <style lang="less" scoped>
 .img-circle {
   border-radius: 100%;
+  height: 10rem;
+  width: 10rem;
+}
+.modal-header {
+  border-bottom: none;
 }
 .modal-footer {
   align-items: center;
   justify-content: center;
+  border-top: none;
+  margin: 1rem 0;
   button {
     border-radius: 20px;
     width: 150px;
+    width: 7.7rem;
+    font-size: 0.7rem;
   }
 }
 .modal-title {

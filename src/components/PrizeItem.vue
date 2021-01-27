@@ -1,34 +1,72 @@
 <template>
-  <div class="card col-sm-12 col-lg-3 col-md-12 m-3" style="width: 25m">
-    <img
-      v-bind:src="item.image_url"
-      class="card-img-top img"
-      v-bind:alt="item.name"
-    />
-    <div class="card-body">
-      <h3 class="card-title fw-bolder mt-5 mb-5">Win a {{ item.name }}</h3>
+  <div class="col my-3">
+    <div class="card shadow-sm" style="width: 25m">
+      <img
+        v-bind:src="item.image_url"
+        class="card-img-top img"
+        v-bind:alt="item.name"
+      />
+      <div class="card-body">
+        <div class="card-text py-5">Win a {{ item.name }}</div>
 
-      <button type="button" class="btn btn-warning br" v-on:click="redeem()">
-        Redeem
-        <i class="fas fa-angle-right"></i>
-      </button>
+        <button
+          type="button"
+          class="btn btn-warning br my-2 px-lg-5 px-sm-4 px-5 py-2"
+          v-on:click="redeem()"
+        >
+          Redeem >
+          <i class="fas fa-angle-right"></i>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 <style lang="less" scoped>
-.card {
-  float: left;
-  min-height: 420px;
-}
 .img {
-  height: 180px;
+  height: 17rem;
 }
 .br {
   border-radius: 20px;
-  width: 70%;
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: 0.8em;
 }
+.card {
+  border: none;
+}
+.card-text {
+  font-weight: 900;
+}
+// Small Devices
+@media (min-width: 320px) and (max-width: 768px) {
+  .card-text {
+    font-size: 1.2rem;
+  }
+  .img {
+    height: 10rem;
+  }
+  .br {
+    font-size: 0.6em;
+  }
+}
+
+// Medium Devices
+@media (min-width: 768px) and (max-width: 992px) {
+  .card-text {
+    font-size: 0.9rem;
+  }
+  .img {
+    height: 10rem;
+  }
+  .br {
+    font-size: 0.7em;
+  }
+}
+//Large Devices
+@media (min-width: 992px) and (max-width: 1200px) {
+  .img {
+    height: 12rem;
+  }
+}
+
 </style>
 <script>
 export default {
