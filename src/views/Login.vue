@@ -66,10 +66,6 @@ export default {
               return (this.error.message = message);
             }
             setToken(data.token);
-            this.$emit("updateUser", {
-              user: data.user,
-              status: true,
-            });
             this.$router.replace({ name: "Home" });
           })
           .catch((error) => {

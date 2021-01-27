@@ -124,6 +124,7 @@ export default {
     updateUser(data) {
       this.user = data.user;
       this.isAuthenticate = data.status;
+      console.log(this.user)
     },
     selectItem(data) {
       if (!data.name) return (this.selectedItem = data);

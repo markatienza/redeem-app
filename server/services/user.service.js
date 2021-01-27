@@ -32,7 +32,6 @@ module.exports = {
             if (!user) return null;
             return {
                 username: user.username,
-                password: user.password,
                 firstName: user.firstName,
                 lastName: user.lastName,
                 _id: user._id
