@@ -19,7 +19,7 @@
       </div>
       <!-- CONTENT -->
       <div class="content row px-lg-5 pb-5">
-        <div v-if="!selectedItem.name">
+        <div v-if="!selectedItem.name && !isLoading">
           <div class="content-header">
             <div class="content-header-t">
               Here is the full list of prizes that you can win.
@@ -35,7 +35,7 @@
           </div>
         </div>
 
-        <div v-if="selectedItem.name">
+        <div v-if="selectedItem.name && !isLoading">
           <PrizeDetail :item="selectedItem" />
         </div>
       </div>
@@ -114,6 +114,7 @@ export default {
   data() {
     return {
       isAuthenticate: false,
+      isLoading: true,
       user: {},
       items: [],
       selectedItem: {},
@@ -133,6 +134,7 @@ export default {
         .then((response) => {
           if (response.data) {
             this.selectedItem = response.data.data;
+            this.isLoading = false;
           }
         })
         .catch((err) => console.log(err));
@@ -143,6 +145,7 @@ export default {
         .then((response) => {
           if (response.data) {
             this.items = response.data.data;
+            this.isLoading = false;
           }
         })
         .catch((err) => console.log(err));
