@@ -7,7 +7,7 @@
         v-bind:alt="item.name"
       />
       <div class="card-body">
-        <div class="card-text py-lg-4 my-lg-1">Win a {{ item.name }}</div>
+        <div class="card-text py-lg-4 py-md-3 my-lg-1 py-4">Win a {{ item.name }}</div>
 
         <button
           type="button"
