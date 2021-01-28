@@ -7,7 +7,7 @@
         v-bind:alt="item.name"
       />
       <div class="card-body">
-        <div class="card-text py-5">Win a {{ item.name }}</div>
+        <div class="card-text py-lg-4 my-lg-1">Win a {{ item.name }}</div>
 
         <button
           type="button"
@@ -44,7 +44,7 @@
     height: 13rem;
   }
   .br {
-    font-size: 0.6em;
+    font-size: 0.8em;
   }
 }
 

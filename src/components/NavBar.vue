@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/home">
+      <a class="navbar-brand" style="width: 0px" href="/home">
         <img src="@/assets/logo.png" alt="" width="40" height="35" />
-        REDEEM APP
+        <span class="brand-title">REDEEMIFY</span>
       </a>
 
       <div class="" id="navbarSupportedContent">
@@ -32,13 +32,14 @@
               <button
                 class="dropdown-item btn btn-danger"
                 v-on:click="logout()"
-                >Logout</button
               >
+                Logout
+              </button>
             </li>
           </ul>
         </div>
         <button
-          class="btn btn-success px-5"
+          class="btn btn-success px-lg-5 px-sm-5 px-md-5"
           v-if="!isAuthenticate"
           v-on:click="login()"
         >
@@ -60,6 +61,7 @@
   height: 2rem;
 }
 .btn-avatar {
+  padding: 0px;
   display: flex;
 }
 </style>
