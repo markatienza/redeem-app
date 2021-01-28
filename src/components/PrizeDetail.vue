@@ -92,6 +92,7 @@
 // Small Devices
 @media (min-width: 320px) and (max-width: 767px) {
   .img {
+    height: auto;
     padding: 1rem 0;
   }
   .card-title {
