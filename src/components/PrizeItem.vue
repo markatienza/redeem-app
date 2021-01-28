@@ -23,7 +23,7 @@
 </template>
 <style lang="less" scoped>
 .img {
-  height: 17rem;
+  height: 14rem;
 }
 .br {
   border-radius: 20px;
@@ -41,7 +41,7 @@
     font-size: 1.2rem;
   }
   .img {
-    height: 10rem;
+    height: 13rem;
   }
   .br {
     font-size: 0.6em;
