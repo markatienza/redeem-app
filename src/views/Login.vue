@@ -38,8 +38,6 @@
 </template>
 
 <script>
-// import request from "../api/request";
-// import { setToken } from "../helpers/token";
 import { mapState } from "vuex";
 export default {
   name: "Login",

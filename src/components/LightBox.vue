@@ -113,10 +113,11 @@ export default {
       this.$store.dispatch("prizes/confirmRedeem", this.item.name);
     },
     backToHomePage() {
+      this.$store.dispatch("prizes/selectItem", {});
+
       if (this.isConfirm && this.isNotValid)
         return this.$router.push({ name: "Login" });
 
-      this.$store.dispatch("prizes/selectItem", {});
       this.$store.dispatch("prizes/setItems");
       this.$store.commit("prizes/setConfirm", true);
       this.$router.replace({ name: "Home" });

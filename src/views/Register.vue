@@ -75,7 +75,6 @@
 </template>
 
 <script>
-// import request from "../api/request";
 import { mapState } from "vuex";
 
 export default {

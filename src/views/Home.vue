@@ -85,7 +85,6 @@ import NavBar from "../components/NavBar";
 import PrizeItem from "../components/PrizeItem";
 import PrizeDetail from "../components/PrizeDetail";
 import LightBox from "../components/LightBox";
-// import request from "../api/request";
 
 export default {
   name: "Home",
@@ -110,21 +109,6 @@ export default {
     } else {
       this.$store.dispatch("prizes/setItems");
     }
-  },
-
-  data() {
-    return {
-      isOpen: false,
-    };
-  },
-  methods: {
-    // selectItem(data) {
-    //   if (!data.name) return (this.selectedItem = data);
-    //   this.$store.dispatch("prizes/selectItem", data);
-    // },
-    setItems() {
-      this.$store.dispatch("prizes/setItems");
-    },
   },
 };
 </script>
