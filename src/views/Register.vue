@@ -75,10 +75,16 @@
 </template>
 
 <script>
-import request from "../api/request";
-// import { setToken } from "../helpers/token";
+// import request from "../api/request";
+import { mapState } from "vuex";
+
 export default {
   name: "Login",
+  computed: {
+    ...mapState({
+      error: (state) => state.auth.error,
+    }),
+  },
   data() {
     return {
       input: {
@@ -88,38 +94,13 @@ export default {
         firstName: "",
         lastName: "",
       },
-      error: {
-        message: "",
-      },
     };
   },
   methods: {
     register() {
-      this.error.message = "";
+      this.$store.commit("auth/setErrorMsg", "");
       const data = { ...this.input };
-      if (
-        !data.username ||
-        !data.password | !data.confirmPassword ||
-        !data.firstName ||
-        !data.lastName
-      ) {
-        this.error.message = "All fields are required!";
-      } else if (data.password !== data.confirmPassword) {
-        this.error.message = "Password don't match!";
-      } else {
-        request
-          .post("/user", data)
-          .then((response) => {
-            const data = response.data;
-            if (!data.data) {
-              return (this.error.message = data.message);
-            }
-            this.$router.replace({ name: "Login" });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+      this.$store.dispatch("auth/register", data);
     },
     backToLogin() {
       this.$router.replace({ name: "Login" });

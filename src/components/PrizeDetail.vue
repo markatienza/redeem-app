@@ -165,7 +165,7 @@ export default {
   },
   methods: {
     showModal() {
-      this.$emit("selectedItem", this.item);
+      this.$store.dispatch("prizes/selectItem", this.item);
     },
   },
 };

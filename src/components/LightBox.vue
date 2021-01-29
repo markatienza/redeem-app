@@ -97,47 +97,30 @@
 }
 </style>
 <script>
-import request from "../api/request";
+import { mapState } from "vuex";
 export default {
   name: "RedeemModal",
-  data() {
-    return {
-      title: "Are you sure?",
-      isConfirm: true,
-      isNotValid: false,
-    };
+  computed: {
+    ...mapState({
+      item: (state) => state.prizes.selectedItem,
+      title: (state) => state.prizes.title,
+      isConfirm: (state) => state.prizes.isConfirm,
+      isNotValid: (state) => state.prizes.isNotValid,
+    }),
   },
   methods: {
     confirmRedeem() {
-      request
-        .post("/prizes/deductQuantity", { name: this.item.name })
-        .then((response) => {
-          const data = response.data.data;
-          if (data) {
-            this.$emit("selectItem", data);
-            this.isConfirm = !this.isConfirm;
-            this.title = "Congratulations!";
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          this.title = "Please Login!";
-          this.isNotValid = true;
-        });
+      this.$store.dispatch("prizes/confirmRedeem", this.item.name);
     },
     backToHomePage() {
       if (this.isConfirm && this.isNotValid)
         return this.$router.push({ name: "Login" });
 
-      this.$emit("selectItem", {});
-      this.$emit("setItems");
-      this.$emit("updateItems", true);
-      this.isConfirm = true;
+      this.$store.dispatch("prizes/selectItem", {});
+      this.$store.dispatch("prizes/setItems");
+      this.$store.commit("prizes/setConfirm", true);
       this.$router.replace({ name: "Home" });
     },
-  },
-  props: {
-    item: Object,
   },
 };
 </script>

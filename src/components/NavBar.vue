@@ -66,38 +66,25 @@
 }
 </style>
 <script>
-import { deleteToken, getToken } from "../helpers/token";
-import request from "../api/request";
+import { mapState } from "vuex";
 export default {
   name: "NavBar",
+  computed: {
+    ...mapState({
+      user: (state) => state.auth.user,
+      isAuthenticate: (state) => state.auth.isAuthenticate,
+    }),
+  },
   methods: {
     logout() {
-      deleteToken();
-      this.$emit("updateUser", { user: {}, status: false });
-      this.$router.replace({ name: "Login" });
+      this.$store.dispatch("auth/logout");
     },
     login() {
       this.$router.replace({ name: "Login" });
     },
   },
   beforeCreate() {
-    const token = getToken();
-    if (token) {
-      request
-        .post("/user/verify", { token })
-        .then((res) => {
-          console.log(res.data.data.user);
-          this.$emit("updateUser", { user: res.data.data.user, status: true });
-        })
-        .catch((err) => {
-          deleteToken();
-          console.log(err);
-        });
-    }
-  },
-  props: {
-    user: Object,
-    isAuthenticate: Boolean,
+    this.$store.dispatch("auth/updateUser");
   },
 };
 </script>

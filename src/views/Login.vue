@@ -38,41 +38,34 @@
 </template>
 
 <script>
-import request from "../api/request";
-import { setToken } from "../helpers/token";
+// import request from "../api/request";
+// import { setToken } from "../helpers/token";
+import { mapState } from "vuex";
 export default {
   name: "Login",
+  computed: {
+    ...mapState({
+      error: (state) => state.auth.error,
+    }),
+  },
   data() {
     return {
       input: {
         username: "",
         password: "",
       },
-      error: {
-        message: "",
-      },
     };
   },
   methods: {
     login() {
-      this.error.message = "";
       const data = { ...this.input };
       if (data.username != "" && data.password != "") {
-        request
-          .post("/user/auth", data)
-          .then((response) => {
-            const { data, message } = response.data;
-            if (!data) {
-              return (this.error.message = message);
-            }
-            setToken(data.token);
-            this.$router.replace({ name: "Home" });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        this.$store.dispatch("auth/login", data);
       } else {
-        this.error.message = "Invalid username and password!";
+        this.$store.commit(
+          "auth/setErrorMsg",
+          "Invalid username and password!"
+        );
       }
     },
     register() {
